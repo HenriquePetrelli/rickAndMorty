@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from 'src/components/home/home.component';
-import { SearchFormComponent } from 'src/components/search-form/search-form.component';
+import { HomeComponent } from 'src/app/shared/components/home/home.component';
+import { SearchFormComponent } from 'src/app/shared/components/search-form/search-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },

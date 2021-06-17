@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  baseUrlAPI: 'https://rickandmortyapi.com/api/'
+  baseUrl: 'https://rickandmortyapi.com/api/'
 };
 
