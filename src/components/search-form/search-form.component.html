@@ -1,0 +1,9 @@
+<div class="example-container">
+  <div class="example-container">
+    <mat-form-field class="form" appearance="fill">
+      <input matInput placeholder="Search characters" [formControl]="characterName" required>
+      <mat-error *ngIf="characterName.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <button class="btn" mat-stroked-button>Search</button>
+  </div>
+</div>

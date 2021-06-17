@@ -1,4 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+@import url(./theme.scss);
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+*{
+    font-family: 'Nunito';
+}
+
+$primary: #ffffff;
+$accent: #cbd736;
+$warn: #f44336;
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+}
+
+.mat-error {
+  color: $warn;
+  margin-top: 10px;
+}
+
+.mat-form-field-flex {
+  border: 2px solid #ffffff;
+  border-radius: 8px!important;
+  outline: none;
+  color: white;
+  padding: 10px 14px !important;
+}
+
+.mat-form-field-flex:hover {
+  border-color: $accent;
+  box-shadow: 0px 0px 7px $accent;
+}
