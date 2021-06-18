@@ -17,16 +17,11 @@ export class CharacterService {
   constructor(private _helper: Helper, private http: HttpClient) { }
 
   async searchCharacters(characterName: string): Promise<Observable<Character[] | httpError>> {
-    const result = `${environment.baseUrl}character/?name=${characterName}`;
-    return this.http.get<Character[]>(result)
+    const result = `${environment.baseUrl}?name=${characterName}`;
+    return await this.http.get<Character[]>(result)
       .pipe(catchError((err) => this.handleHttpError(err)));
   }
-
-  getCharacterDetails(id: number) {
-    return this.http.get<Character>(`${environment.baseUrl}character/${id}`)
-      .pipe(catchError((err) => this.handleHttpError(err)));
-  }
-
+  
   private handleHttpError(error: HttpErrorResponse): Observable<httpError> {
     let dataError = new httpError();
     dataError.errorNumber = error.status;
