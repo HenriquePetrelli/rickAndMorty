@@ -15,13 +15,15 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatCardModule} from '@angular/material/card';
 import { CommonModule } from '@angular/common';
+import { LoadingComponent } from './shared/components/loading/loading.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SearchFormComponent,
-    CharacterCardComponent
+    CharacterCardComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
