@@ -10,6 +10,7 @@
       <img class="card-image" [ngClass]="character.status == 'Dead'? 'character-dead' : ''" src={{character.image}} alt={{character.name}}>
     </div>
     <div class="card-content">
+      <img class="card-info" [ngClass]="character.status == 'Dead'? 'character-dead' : ''" src={{character.image}} alt={{character.name}}>
       <h4 class="name limit-letters">
         {{character.name}}
       </h4>

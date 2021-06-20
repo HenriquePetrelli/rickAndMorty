@@ -34,7 +34,9 @@ $warn: #f44336;
   line-height: 22px;
 }
 
-.btn:hover, .btn:active, .btn:focus {
+.btn:hover,
+.btn:active,
+.btn:focus {
   color: $accent;
   border-color: $accent;
   box-shadow: 0px 0px 7px $accent;
@@ -102,8 +104,7 @@ $warn: #f44336;
   bottom: 30px;
 }
 
-
-.container .card{
+.container .card {
   position: relative;
   overflow: hidden;
   width: 187px;
@@ -115,14 +116,14 @@ $warn: #f44336;
   margin: 24px;
 }
 
-.container .card .img-card{
+.container .card .img-card {
   position: absolute;
   top: 50%;
   z-index: 10000;
   width: 110%;
 }
 
-.container .card .img-card img{
+.container .card .img-card img {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -134,7 +135,7 @@ $warn: #f44336;
   background-size: cover;
 }
 
-.container .card .content-card{
+.container .card .content-card {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -166,13 +167,22 @@ $warn: #f44336;
   max-width: 200px;
 }
 
+.card-info {
+  width: 100%;
+  bottom: 0;
+  filter: blur(30px) grayscale(100%);
+  z-index: 0;
+  height: 56px;
+  position: absolute;
+}
+
 @media only screen and (max-width: 950px) {
   .card-list {
     margin-top: 60%;
   }
 
-  .btn, .form {
+  .btn,
+  .form {
     top: 167px;
   }
 }
-

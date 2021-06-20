@@ -201,9 +201,11 @@ body {
 
   .character-img-background {
     min-height: 100%;
-    filter: brightness(0.5) blur(15px);
+    filter: brightness(0.5) blur(2px);
     background-blend-mode: initial;
     width: -webkit-fill-available;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
   }
 
   .name {
