@@ -17,7 +17,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatCardModule} from '@angular/material/card';
-import {MatIconModule} from '@angular/material/icon'
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import {MatIconModule} from '@angular/material/icon'
     SearchFormComponent,
     CharacterCardComponent,
     LoadingComponent,
-    CharacterDetailComponent
+    CharacterDetailComponent,
   ],
   imports: [
     BrowserModule,
