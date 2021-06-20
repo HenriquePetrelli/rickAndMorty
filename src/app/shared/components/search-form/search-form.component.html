@@ -6,19 +6,17 @@
 
 <div class="card-list">
   <div class="card" *ngFor="let character of characters"  (click)="showCharacterDetails = true">
-    <div>
-      <img class="card-image" src={{character.image}} alt={{character.name}}>
+    <div> 
+      <img class="card-image" [ngClass]="character.status == 'Dead'? 'character-dead' : ''" src={{character.image}} alt={{character.name}}>
     </div>
     <div class="card-content">
-      <h4 class="name">
+      <h4 class="name limit-letters">
         {{character.name}}
       </h4>
       <p class="species">{{character.species}}</p>
     </div>
   </div>
 </div>
-
-<div></div>
 
 <app-character-detail *ngIf="showCharacterDetails"></app-character-detail>
 <!-- <app-character-card *ngIf="showCharacter"></app-character-card> -->

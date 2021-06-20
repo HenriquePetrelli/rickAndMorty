@@ -155,6 +155,17 @@ $warn: #f44336;
   margin: 2px 0px;
 }
 
+.character-dead {
+  filter: grayscale(100%);
+}
+
+.limit-letters {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
 @media only screen and (max-width: 950px) {
   .card-list {
     margin-top: 60%;
@@ -164,3 +175,4 @@ $warn: #f44336;
     top: 167px;
   }
 }
+
