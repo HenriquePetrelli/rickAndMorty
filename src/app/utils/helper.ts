@@ -15,6 +15,11 @@ export class Helper {
         });
     }
 
+    returnSplitUrlApi(url: string) {
+        let split = url.split("/");
+        return split[5];
+    }
+
     returnMsgToRequest(response: any) {
         switch (response.status) {
             case 0: {

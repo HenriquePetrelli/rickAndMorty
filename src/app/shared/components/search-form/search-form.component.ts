@@ -14,6 +14,7 @@ export class SearchFormComponent implements OnInit {
   characterName: string;
   showCharacter: boolean;
   characters: NgIterable<Character> | null | undefined;
+  showCharacterDetails: boolean = false;
 
   constructor(private router: Router,
     private _characterService: CharacterService
@@ -24,13 +25,17 @@ export class SearchFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  
 
   async searchCharacter() {
-    let response = (await this._characterService.searchCharacters(this.characterName)).subscribe((response: any) => {
+    let response = (await this._characterService.searchCharactersByName(this.characterName)).subscribe((response: any) => {
       console.log(response);
       if (response) {
         this.characters = response.results;
         this.showCharacter = true;
+        response.results.forEach((result: { status: string; }) => {
+          console.log(result.status);
+        });
       }
     }, error => {
       // let msgError = this._helper.returnMsgToRequest(error);
@@ -38,14 +43,19 @@ export class SearchFormComponent implements OnInit {
     });
   }
 
-  // async searchCharacter(): void {
-  //   let request = (await this._characterService.searchCharacters(name)).subscribe((response: any) => {
-  //     this.pokemon = response.name;
-  //     this.pokemonImage = response.sprites.other.dream_world.front_default
-  //     this.pokemonStats = response.stats;
-  //   }, error => {
-  //     let msgError = this._helper.returnMsgToRequest(error);
-  //     this._helper.showToastMsg(msgError.error, "", 6000);
-  //   });
+  // async getCharacterDetails(id: any) {
+  //   if (id) {
+  //     let response = (await this._characterService.getCharacterDetailsById(id)).subscribe((response: any) => {
+  //       if (response) {
+  //        console.log(response);
+  //       }
+  //     }, error => {
+  //       // let msgError = this._helper.returnMsgToRequest(error);
+  //       // this._helper.showToastMsg(msgError.error, "", 6000);
+  //     });
+  //     // let msgError = this._helper.returnMsgToRequest(error);
+  //     // this._helper.showToastMsg(msgError.error, "", 6000);
+  //   }
   // }
+  
 }

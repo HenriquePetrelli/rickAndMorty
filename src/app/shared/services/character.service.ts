@@ -16,11 +16,28 @@ import { httpError } from '../models/httpError';
 export class CharacterService {
   constructor(private _helper: Helper, private http: HttpClient) { }
 
-  async searchCharacters(characterName: string): Promise<Observable<Character[] | httpError>> {
-    const result = `${environment.baseUrl}?name=${characterName}`;
+  async searchCharactersByName(characterName: string): Promise<Observable<Character[] | httpError>> {
+    const result = `${environment.baseUrl}character/?name=${characterName}`;
     return await this.http.get<Character[]>(result)
       .pipe(catchError((err) => this.handleHttpError(err)));
   }
+
+  async getCharacterDetailsById(id: number) {
+    return this.http.get<Character>(`${environment.baseUrl}/character/${id}`)
+    .pipe(catchError((err) => this.handleHttpError(err)));
+  }
+
+  async getLastEpisode(epNumber: number) {
+    return this.http.get<Character>(`${environment.baseUrl}/episode/${epNumber}`)
+    .pipe(catchError((err) => this.handleHttpError(err)));
+  }
+
+  async getCharacterLocationById(id: number | undefined) {
+    return this.http.get<Character>(`${environment.baseUrl}/location/${id}`)
+    .pipe(catchError((err) => this.handleHttpError(err)));
+  }
+
+
   
   private handleHttpError(error: HttpErrorResponse): Observable<httpError> {
     let dataError = new httpError();
