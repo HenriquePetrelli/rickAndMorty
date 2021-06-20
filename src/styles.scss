@@ -27,7 +27,7 @@ body {
   padding: 10px 14px !important;
 }
 
-.mat-form-field-flex:hover {
+.mat-form-field-flex:hover, .mat-form-field-flex:active, .mat-form-field-flex:focus  {
   border-color: $accent;
   box-shadow: 0px 0px 7px $accent;
 }
@@ -44,7 +44,8 @@ body {
 }
 
 .mat-card:hover,
-.mat-card:active {
+.mat-card:active,
+.mat-card:focus {
   border: 2px solid #cbd736;
   box-shadow: 0px 0px 0px 3px #c9d636, 0px 0px 5px 4px #c9d636,
     inset 0px 0px 0px 1px rgba(0, 0, 0, 0.6);

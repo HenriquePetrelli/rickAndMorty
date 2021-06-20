@@ -34,7 +34,7 @@ $warn: #f44336;
   line-height: 22px;
 }
 
-.btn:hover {
+.btn:hover, .btn:active, .btn:focus {
   color: $accent;
   border-color: $accent;
   box-shadow: 0px 0px 7px $accent;

@@ -58,8 +58,10 @@ export class SearchFormComponent implements OnInit {
       this._helper.showToastMsg("Fill in the field with at least 3 letters!", "", 4000);
       return false;
     } else return true;
-
   }
+
+
+
   // async getCharacterDetails(id: any) {
   //   if (id) {
   //     let response = (await this._characterService.getCharacterDetailsById(id)).subscribe((response: any) => {
