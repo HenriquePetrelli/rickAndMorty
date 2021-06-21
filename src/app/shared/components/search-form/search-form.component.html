@@ -5,7 +5,7 @@
 <button tabindex="2" (click)="searchCharacter()" (keyup.enter)="searchCharacter()" class="btn" mat-stroked-button>Search</button>
 
 <div class="card-list">
-  <div class="card" *ngFor="let character of characters"  (click)="showCharacterDetails = true">
+  <div class="card" *ngFor="let character of characters" (click)="openCharacterDetail(character.id)">
     <div> 
       <img class="card-image" [ngClass]="character.status == 'Dead'? 'character-dead' : ''" src={{character.image}} alt={{character.name}}>
     </div>
@@ -20,4 +20,3 @@
 </div>
 
 <app-character-detail *ngIf="showCharacterDetails"></app-character-detail>
-<!-- <app-character-card *ngIf="showCharacter"></app-character-card> -->

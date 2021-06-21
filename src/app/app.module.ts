@@ -9,7 +9,6 @@ import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { HomeComponent } from 'src/app/shared/components/home/home.component';
 import { SearchFormComponent } from 'src/app/shared/components/search-form/search-form.component';
-import { CharacterCardComponent } from './shared/components/character-card/character-card.component';
 import { LoadingComponent } from './shared/components/loading/loading.component';
 import { CharacterDetailComponent } from './shared/components/character-detail/character-detail.component';
 //MATERIAL
@@ -24,7 +23,6 @@ import {MatIconModule} from '@angular/material/icon';
     AppComponent,
     HomeComponent,
     SearchFormComponent,
-    CharacterCardComponent,
     LoadingComponent,
     CharacterDetailComponent,
   ],
@@ -42,7 +40,7 @@ import {MatIconModule} from '@angular/material/icon';
     CommonModule,
     MatIconModule
   ],
-  providers: [],
+  providers: [SearchFormComponent, CharacterDetailComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

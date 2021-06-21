@@ -2,7 +2,7 @@
     <div class="main">
         <div class="content">
             <img class="logo" src="../../assets/imgs/logo.png">
-            <!-- <app-loading></app-loading> -->
+            <app-loading [hidden]="!showLoading"></app-loading>
             <app-search-form></app-search-form>
         </div>
     </div>

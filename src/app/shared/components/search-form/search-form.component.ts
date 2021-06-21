@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { Helper } from 'src/app/utils/helper';
 import { Character } from '../../interfaces/character.interface';
 import { CharacterService } from '../../services/character.service';
-// import { CharacterCardComponent } from '../character-card/character-card.component';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-search-form',
@@ -19,7 +19,8 @@ export class SearchFormComponent implements OnInit {
 
   constructor(private router: Router,
     private _characterService: CharacterService,
-    private _helper: Helper
+    private _helper: Helper,
+    private homeComponent: HomeComponent
   ) {
     this.characterName = "";
     this.showCharacter = true;
@@ -30,20 +31,19 @@ export class SearchFormComponent implements OnInit {
   async searchCharacter() {
     let isValid = this.validateForm();
     if (!isValid) return;
+    this.homeComponent.showLoading = true;
     (await this._characterService.searchCharactersByName(this.characterName)).toPromise().then((response: any) => {
       if (!response) {
+        this.homeComponent.showLoading = false;
         this._helper.showToastMsg("Character not found!", "", 4000);
         return;
       }
-      console.log(response);
-      if (response) {
-        this.characters = response.results;
-        this.showCharacter = true;
-        response.results.forEach((result: { status: string; }) => {
-          console.log(result.status);
-        });
-      }
+      this.characters = response.results;
+      console.log(this.characters);
+      this.showCharacter = true;
+      this.homeComponent.showLoading = false;
     }).catch(error => {
+      this.homeComponent.showLoading = false;
       let msgError = this._helper.returnMsgToRequest(error);
       this._helper.showToastMsg(msgError.message, "", 4000);
     })
@@ -60,21 +60,8 @@ export class SearchFormComponent implements OnInit {
     } else return true;
   }
 
-
-
-  // async getCharacterDetails(id: any) {
-  //   if (id) {
-  //     let response = (await this._characterService.getCharacterDetailsById(id)).subscribe((response: any) => {
-  //       if (response) {
-  //        console.log(response);
-  //       }
-  //     }, error => {
-  //       // let msgError = this._helper.returnMsgToRequest(error);
-  //       // this._helper.showToastMsg(msgError.error, "", 6000);
-  //     });
-  //     // let msgError = this._helper.returnMsgToRequest(error);
-  //     // this._helper.showToastMsg(msgError.error, "", 6000);
-  //   }
-  // }
-
+  openCharacterDetail(id: number) {
+    this.showCharacterDetails = true
+    this._characterService.setIdCharacter(id);
+  }
 }

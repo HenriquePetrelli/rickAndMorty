@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Helper } from 'src/app/utils/helper';
 import { CharacterService } from '../../services/character.service';
+import { HomeComponent } from '../home/home.component';
+import { SearchFormComponent } from '../search-form/search-form.component';
 
 @Component({
   selector: 'app-character-detail',
@@ -9,10 +11,7 @@ import { CharacterService } from '../../services/character.service';
   styleUrls: ['./character-detail.component.scss']
 })
 export class CharacterDetailComponent implements OnInit {
-  @Input()
-  id: number | undefined;
-
-  private sub: any;
+  id: string | null;
   //character
   character: {} = {};
   characterImage: string | undefined;
@@ -30,44 +29,53 @@ export class CharacterDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private characterService: CharacterService,
-    private helper: Helper) { }
+    private helper: Helper,
+    private searchFormComponent: SearchFormComponent,
+    private homeComponent: HomeComponent) {
+    this.id = localStorage.getItem("id");
+  }
 
   async ngOnInit() {
-    // this.sub = this.route.params.subscribe(params => {
-    //   this.id = +params['id'];
-    // });
-    this.id = 1;
     await this.getCharacterAbout();
   }
 
-  ngOnDestroy() {
-    this.sub.unsubscribe();
+  closeDetailCard() {
+    this.searchFormComponent.showCharacterDetails = false;
   }
 
   async getCharacterAbout() {
     if (!this.id) return;
+    this.homeComponent.showLoading = true;
     (await this.characterService.getCharacterDetailsById(this.id)).subscribe(async (result: any) => {
       let lastSeenDate;
-      if (result) {
-        this.character = result;
-        this.characterImage = result.image
-        await this.originDescriptionConstructor(result.origin.url);
-        await this.locationDescriptionConstructor(result.location.url);
-
-        let epNumber = this.helper.returnSplitUrlApi(result.episode[result.episode.length - 1]);
-        (await this.characterService.getLastEpisode(+epNumber)).subscribe(async (episode: any) => {
-          if (episode) {
-            lastSeenDate = episode.air_date;
-            this.aboutDescription = await this.aboutDescriptionContructor(result, lastSeenDate);
-          }
-        }, error => {
-          // let msgError = this._helper.returnMsgToRequest(error);
-          // this._helper.showToastMsg(msgError.error, "", 6000);
-        });
+      if (!result) {
+        this.homeComponent.showLoading = false;
+        this.helper.showToastMsg("Details not found!", "", 4500);
+        return;
       }
+      this.character = result;
+      this.characterImage = result.image
+      await this.originDescriptionConstructor(result.origin.url);
+      await this.locationDescriptionConstructor(result.location.url);
+
+      let epNumber = this.helper.returnSplitUrlApi(result.episode[result.episode.length - 1]);
+      (await this.characterService.getLastEpisode(+epNumber)).subscribe(async (episode: any) => {
+        if (!episode) {
+          this.helper.showToastMsg("Episode not found!", "", 4500);
+          return;
+        }
+        lastSeenDate = episode.air_date;
+        this.aboutDescription = await this.aboutDescriptionContructor(result, lastSeenDate);
+        this.homeComponent.showLoading = false;
+      }, error => {
+        this.homeComponent.showLoading = false;
+        let msgError = this.helper.returnMsgToRequest(error);
+        this.helper.showToastMsg(msgError.friendlyMessage, "", 4500);
+      });
     }, error => {
-      // let msgError = this._helper.returnMsgToRequest(error);
-      // this._helper.showToastMsg(msgError.error, "", 6000);
+      this.homeComponent.showLoading = false;
+      let msgError = this.helper.returnMsgToRequest(error);
+      this.helper.showToastMsg(msgError.friendlyMessage, "", 4500);
     });
   }
 
@@ -119,36 +127,55 @@ export class CharacterDetailComponent implements OnInit {
   }
 
   async originDescriptionConstructor(urlOrigin: string) {
-    console.log(urlOrigin);
+    if (!urlOrigin) {
+      this.originType = "unknown";
+      this.originName = "unknown";
+      this.originDimension = "unknown";
+      this.originResidents = 0;
+      return;
+    }
     let originId = this.helper.returnSplitUrlApi(urlOrigin);
     (await this.characterService.getCharacterLocationById(+originId)).subscribe(async (origin: any) => {
-      if (origin) {
-        this.originType = origin.type;
-        this.originName = origin.name;
-        this.originDimension = origin.dimension;
-        this.originResidents = origin.residents.length;
-        console.log(origin);
+      if (!origin) {
+        this.helper.showToastMsg("Location not found!", "", 4500);
+        return;
+        return;
       }
+      this.originType = origin.type;
+      this.originName = origin.name;
+      this.originDimension = origin.dimension;
+      this.originResidents = origin.residents.length;
+      if (!origin.residents.length)
+        this.originResidents = 0;
     }, error => {
-      // let msgError = this._helper.returnMsgToRequest(error);
-      // this._helper.showToastMsg(msgError.error, "", 6000);
+      let msgError = this.helper.returnMsgToRequest(error);
+      this.helper.showToastMsg(msgError.friendlyMessage, "", 4500);
     });
   }
 
   async locationDescriptionConstructor(urlLocation: string) {
-    console.log(urlLocation);
+    if (!urlLocation) {
+      this.locationType = "unknown";
+      this.locationName = "unknown";
+      this.locationDimension = "unknown";
+      this.locationResidents = 0;
+      return;
+    }
     let locationId = this.helper.returnSplitUrlApi(urlLocation);
     (await this.characterService.getCharacterLocationById(+locationId)).subscribe(async (location: any) => {
-      if (location) {
-        this.locationType = location.type;
-        this.locationName = location.name;
-        this.locationDimension = location.dimension;
-        this.locationResidents = location.residents.length;
-        console.log(location);
+      if (!location) {
+        this.helper.showToastMsg("Location not found!", "", 4500);
+        return;
       }
+      this.locationType = location.type;
+      this.locationName = location.name;
+      this.locationDimension = location.dimension;
+      this.locationResidents = location.residents.length;
+      if (!location.residents.length)
+        this.locationResidents = 0;
     }, error => {
-      // let msgError = this._helper.returnMsgToRequest(error);
-      // this._helper.showToastMsg(msgError.error, "", 6000);
+      let msgError = this.helper.returnMsgToRequest(error);
+      this.helper.showToastMsg(msgError.friendlyMessage, "", 4500);
     });
   }
 
