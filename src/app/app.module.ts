@@ -17,6 +17,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import {MatIconModule} from '@angular/material/icon';
     CommonModule,
     MatIconModule,
     FormsModule,
+    MatToolbarModule
   ],
   providers: [SearchFormComponent, CharacterDetailComponent],
   bootstrap: [AppComponent]

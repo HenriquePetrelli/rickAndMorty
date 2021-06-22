@@ -33,7 +33,13 @@ export class SearchFormComponent implements OnInit {
  
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    window.addEventListener('scroll', this.scroll, true);
+   }
+
+   ngOnDestroy() {
+    window.removeEventListener('scroll', this.scroll, true);
+}
 
   async searchCharacter(isFirstPage: boolean) {
     let isValid = this.validateForm();
@@ -114,4 +120,49 @@ export class SearchFormComponent implements OnInit {
     localStorage.setItem("next_page", i.toString());
     this.searchCharacter(false);
   }
+
+  scroll = (event: any): void => {
+    let elementForm = document.getElementById("form");
+    let elementFormBtn = document.getElementById("form-btn");
+    let elementToolbar = document.getElementById("toolbar");
+    let elementLogo = document.getElementById("logo");
+
+    let body = document.getElementById("main");
+    if (body && elementForm && elementFormBtn && elementToolbar && elementLogo) {
+    if (body.scrollTop > 80) {
+      elementForm.style.top = "15px";
+      elementForm.style.position = "fixed";
+      elementForm.style.zIndex = "3";
+      elementFormBtn.style.top = "15px";
+      elementFormBtn.style.zIndex = "3";
+      elementFormBtn.style.position = "fixed";
+      elementToolbar.style.display = "block";
+      elementLogo.style.top ="-10px";
+      elementLogo.style.position ="fixed";
+      elementLogo.style.width = "250px";
+      elementLogo.style.height = "80px";
+      elementLogo.style.left = "50px";
+    } else {
+      elementForm.style.top = "326px";
+      elementFormBtn.style.top = "326px";
+      elementForm.style.position = "absolute";
+      elementFormBtn.style.position = "absolute";
+      elementToolbar.style.display = "none";
+      elementLogo.style.top ="38px";
+      elementLogo.style.position ="absolute";
+      elementLogo.style.width = "502px";
+      elementLogo.style.height = "214px";
+      elementLogo.style.left = "calc(50% - 502px / 2 + 12px)";
+    }
+  }
+  };
+
+  // scrollFunction() {
+  //   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  //     document.getElementById("navbar").style.top = "0";
+  //   } else {
+  //     document.getElementById("navbar").style.top = "100px";
+  //   }
+  // }
+
 }

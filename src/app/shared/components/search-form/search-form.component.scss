@@ -13,6 +13,7 @@ $warn: #f44336;
   box-sizing: border-box;
   color: white;
   background: transparent;
+  z-index: 99999;
 }
 
 .btn {
@@ -32,6 +33,7 @@ $warn: #f44336;
   font-weight: bold;
   font-size: 16px;
   line-height: 22px;
+  z-index: 99999;
 }
 
 .btn:hover,
@@ -100,6 +102,17 @@ $warn: #f44336;
   position: absolute;
   left: 0;
   bottom: 30px;
+}
+
+.toolbar {
+  background-color: rgba(54, 54, 54, 0.9);
+  top: 0;
+  position: fixed;
+  height: 80px;
+  width: 100%;
+  left: 0px;
+  display: none;
+  z-index: 2;
 }
 
 .container .card {
