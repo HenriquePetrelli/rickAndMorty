@@ -1,5 +1,5 @@
-*{
-  font-family: 'Nunito', sans-serif;
+* {
+  font-family: "Nunito", sans-serif;
 }
 
 $primary: #ffffff;
@@ -21,13 +21,15 @@ body {
 
 .mat-form-field-flex {
   border: 2px solid #ffffff;
-  border-radius: 8px!important;
+  border-radius: 8px !important;
   outline: none;
   color: white;
   padding: 10px 14px !important;
 }
 
-.mat-form-field-flex:hover, .mat-form-field-flex:active, .mat-form-field-flex:focus  {
+.mat-form-field-flex:hover,
+.mat-form-field-flex:active,
+.mat-form-field-flex:focus {
   border-color: $accent;
   box-shadow: 0px 0px 7px $accent;
 }
@@ -71,23 +73,21 @@ body {
 }
 
 .cdk-overlay-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
 }
 
 ::-webkit-scrollbar {
-  width: 2em; /* Total width including `border-width` of scrollbar thumb */
+  width: 2em;
   height: 0;
   z-index: 99999;
 }
 ::-webkit-scrollbar-thumb {
   background-color: white;
-  // -webkit-box-shadow: inset 0 0 6px rgb(0 0 0 / 30%);
-  // box-shadow: inset 0 0 6px rgb(0 0 0 / 30%);
   height: 2em;
-  border: 0.5em solid rgba(0, 0, 0, 0); /* Transparent border together with `background-clip: padding-box` does the trick */
+  border: 0.5em solid rgba(0, 0, 0, 0);
   background-clip: padding-box;
   -webkit-border-radius: 1em;
   border-radius: 1em;

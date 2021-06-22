@@ -1,24 +1,23 @@
-<mat-toolbar id="toolbar" class="toolbar">
-</mat-toolbar>
-  
-  <mat-form-field id="form" class="form" appearance="fill">
-    <input
-      tabindex="1"
-      matInput
-      placeholder="Search characters"
-      [(ngModel)]="characterName"
-    />
-  </mat-form-field>
-  <button
+<mat-toolbar id="toolbar" class="toolbar"> </mat-toolbar>
+
+<mat-form-field id="form" class="form" appearance="fill">
+  <input
+    tabindex="1"
+    matInput
+    placeholder="Search characters"
+    [(ngModel)]="characterName"
+  />
+</mat-form-field>
+<button
   id="form-btn"
-    tabindex="2"
-    (click)="searchCharacter(true)"
-    (keyup.enter)="searchCharacter(true)"
-    class="btn"
-    mat-stroked-button
-  >
-    Search
-  </button>
+  tabindex="2"
+  (click)="searchCharacter(true)"
+  (keyup.enter)="searchCharacter(true)"
+  class="btn"
+  mat-stroked-button
+>
+  Search
+</button>
 
 <div class="card-list">
   <div
@@ -48,7 +47,8 @@
     </div>
   </div>
 
-  <div id="pagination-container"
+  <div
+    id="pagination-container"
     *ngIf="showPagination && this.numbers.length > 1"
     class="pagination-container"
   >
@@ -62,8 +62,6 @@
       </ul>
     </div>
   </div>
-
-  <!-- <app-pagination *ngIf="showPagination"></app-pagination> -->
 </div>
 
 <app-character-detail *ngIf="showCharacterDetails"></app-character-detail>

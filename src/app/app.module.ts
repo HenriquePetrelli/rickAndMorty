@@ -12,12 +12,12 @@ import { SearchFormComponent } from 'src/app/shared/components/search-form/searc
 import { LoadingComponent } from './shared/components/loading/loading.component';
 import { CharacterDetailComponent } from './shared/components/character-detail/character-detail.component';
 //MATERIAL
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatCardModule} from '@angular/material/card';
-import {MatIconModule} from '@angular/material/icon';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -34,15 +34,15 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule, 
+    MatInputModule,
     MatSnackBarModule,
     MatCardModule,
     CommonModule,
     MatIconModule,
     FormsModule,
-    MatToolbarModule
+    MatToolbarModule,
   ],
   providers: [SearchFormComponent, CharacterDetailComponent],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

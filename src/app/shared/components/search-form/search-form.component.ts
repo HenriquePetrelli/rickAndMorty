@@ -161,7 +161,7 @@ export class SearchFormComponent implements OnInit {
           elementToolbar,
           elementLogo
         );
-      } else if (body.scrollTop < 80 && event.target.clientWidth > 400){
+      } else if (body.scrollTop < 80 && event.target.clientWidth > 400) {
         this.hideToolbar(
           elementForm,
           elementFormBtn,

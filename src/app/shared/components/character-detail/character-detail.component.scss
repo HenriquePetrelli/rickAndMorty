@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800");
 * {
   box-sizing: border-box;
 }
@@ -6,7 +5,6 @@ body {
   background-color: #ffe53b;
   background-image: linear-gradient(147deg, #ffe53b 0%, #fd3838 74%);
   min-height: 100vh;
-  font-family: "Fira Sans", sans-serif;
   display: flex;
 }
 
@@ -245,7 +243,8 @@ body {
   .btn:hover,
   .btn:active {
     color: #cbd736;
-    border: 2px solid #cbd736;  }
+    border: 2px solid #cbd736;
+  }
 
   &__content {
     // width: 60%;

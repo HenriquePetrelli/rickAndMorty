@@ -1,5 +1,5 @@
-export class httpError{
-    errorNumber:number | undefined;
-    message: string | undefined;
-    friendlyMessage: string | undefined;
-  }
+export class httpError {
+  errorNumber: number | undefined;
+  message: string | undefined;
+  friendlyMessage: string | undefined;
+}
