@@ -85,11 +85,10 @@ body {
   z-index: 99999;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: white;
+  background-color: #868686;
   height: 2em;
-  border: 0.5em solid rgba(0, 0, 0, 0);
+  border: 0.7em solid rgba(0, 0, 0, 0);
   background-clip: padding-box;
-  -webkit-border-radius: 1em;
   border-radius: 1em;
 }
 ::-webkit-scrollbar-button {

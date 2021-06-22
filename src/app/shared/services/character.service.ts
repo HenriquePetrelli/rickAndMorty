@@ -19,7 +19,7 @@ export class CharacterService {
     characterName: string,
     page: string
   ): Promise<Observable<Character[] | httpError>> {
-    const result = `${environment.baseUrl}character/?name=${characterName}&?page=${page}`;
+    const result = `${environment.baseUrl}character/?page=${page}&name=${characterName}`;
     const request = await this.http
       .get<Character[]>(result)
       .pipe(catchError((err) => this.handleHttpError(err)));
@@ -28,7 +28,7 @@ export class CharacterService {
 
   async getCharacterDetailsById(id: string) {
     const request = this.http
-      .get<CharacterDetail>(`${environment.baseUrl}/character/${id}`)
+      .get<CharacterDetail>(`${environment.baseUrl}character/${id}`)
       .pipe(catchError((err) => this.handleHttpError(err)));
     return request;
   }

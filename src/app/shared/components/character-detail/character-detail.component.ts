@@ -15,6 +15,8 @@ export class CharacterDetailComponent implements OnInit {
   //character
   character: {} = {};
   characterImage: string | undefined;
+  characterName: string | undefined;
+  characterSpecie: string | undefined;
   aboutDescription: string | undefined;
   //origin
   originDimension: string | undefined;
@@ -56,6 +58,8 @@ export class CharacterDetailComponent implements OnInit {
         }
         this.character = result;
         this.characterImage = result.image;
+        this.characterName = result.name;
+        this.characterSpecie = result.species;
         await this.originDescriptionConstructor(result.origin.url);
         await this.locationDescriptionConstructor(result.location.url);
 

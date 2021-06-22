@@ -56,7 +56,7 @@
       <ul id="pagination">
         <li><a (click)="changePage(false)"></a></li>
         <li *ngFor="let item of this.numbers">
-          <a (click)="goToPage(item)">{{ item }}</a>
+          <a (click)="goToPage(item)" id={{item}}>{{ item }}</a>
         </li>
         <li><a (click)="changePage(true)"></a></li>
       </ul>

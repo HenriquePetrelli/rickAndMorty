@@ -11,6 +11,7 @@ import { HomeComponent } from '../home/home.component';
   templateUrl: './search-form.component.html',
   styleUrls: ['./search-form.component.scss'],
 })
+
 export class SearchFormComponent implements OnInit {
   characterName: string;
   showCharacter: boolean;
@@ -68,7 +69,6 @@ export class SearchFormComponent implements OnInit {
           return;
         }
         localStorage.setItem('character_name', this.characterName);
-        localStorage.setItem('character_name', this.characterName);
         this.characters = response.results;
         await this.setPagination(response.info);
         this.showCharacter = true;
@@ -121,6 +121,7 @@ export class SearchFormComponent implements OnInit {
 
   openCharacterDetail(id: number) {
     this.showCharacterDetails = true;
+    
     this._characterService.setIdCharacter(id);
   }
 
@@ -132,11 +133,19 @@ export class SearchFormComponent implements OnInit {
       pageNumber = this._helper.returnSplitPaginationUrlApi(this.prev);
     }
     localStorage.setItem('next_page', pageNumber);
+    let element: HTMLElement | null;
+    element = document.getElementById(pageNumber);
+    if (element)
+      element.focus();
     this.searchCharacter(false);
   }
 
-  goToPage(i: number) {
-    localStorage.setItem('next_page', i.toString());
+  goToPage(pageNumber: number) {
+    localStorage.setItem('next_page', pageNumber.toString());
+    let element: HTMLElement | null;
+    element = document.getElementById(pageNumber.toString());
+    if (element)
+      element.focus();
     this.searchCharacter(false);
   }
 

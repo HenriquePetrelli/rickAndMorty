@@ -3,24 +3,16 @@
     <div class="blog-slider__item swiper-slide">
       <div class="blog-slider__img">
         <div style="height: 55%">
-          <img
-            class="character-img"
-            src="{{ characterImage }}"
-            alt="{{ characterImage }}"
-          />
+          <img class="character-img" src="{{ characterImage }}" alt="{{ characterImage }}" />
           <div class="img-content">
-            <p class="name">RICK SANCHEZ</p>
-            <p class="specie">Human</p>
+            <p class="name">{{ characterName }}</p>
+            <p class="specie">{{ characterSpecie }}</p>
           </div>
         </div>
       </div>
       <div class="blog-slider__content">
         <div class="blur-img">
-          <img
-            class="character-img-background"
-            src="{{ characterImage }}"
-            alt="{{ characterImage }}"
-          />
+          <img class="character-img-background" src="{{ characterImage }}" alt="{{ characterImage }}" />
           <div class="btn-position">
             <button (click)="closeDetailCard()" class="btn">Close</button>
           </div>
@@ -28,10 +20,7 @@
         <div class="info">
           <div>
             <p class="info-title">ABOUT</p>
-            <p
-              style="margin-bottom: 63px; color: #d3d3d3"
-              class="info-description"
-            >
+            <p style="margin-bottom: 63px; color: #d3d3d3" class="info-description">
               {{ aboutDescription }}
             </p>
           </div>
@@ -42,9 +31,8 @@
             <p class="info-description info-name">{{ originName }}</p>
             <p class="info-description info-dimension">{{ originDimension }}</p>
             <p class="info-description info-residents">
-              <mat-icon class="info-icon" style="margin-right: 10px"
-                >supervisor_account</mat-icon
-              >{{ originResidents }} residents
+              <mat-icon class="info-icon" style="margin-right: 10px">supervisor_account</mat-icon>{{ originResidents }}
+              residents
             </p>
           </div>
 
@@ -56,9 +44,8 @@
               {{ locationDimension }}
             </p>
             <p class="info-description info-residents">
-              <mat-icon class="info-icon" style="margin-right: 10px"
-                >supervisor_account</mat-icon
-              >{{ locationResidents }} residents
+              <mat-icon class="info-icon" style="margin-right: 10px">supervisor_account</mat-icon>{{ locationResidents
+              }} residents
             </p>
           </div>
         </div>

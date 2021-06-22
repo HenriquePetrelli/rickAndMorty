@@ -13,7 +13,7 @@ $warn: #f44336;
   box-sizing: border-box;
   color: white;
   background: transparent;
-  z-index: 99999;
+  z-index: 10;
 }
 
 .btn {
@@ -33,7 +33,7 @@ $warn: #f44336;
   font-weight: bold;
   font-size: 16px;
   line-height: 22px;
-  z-index: 99999;
+  z-index: 10;
 }
 
 .btn:hover,
@@ -56,17 +56,17 @@ $warn: #f44336;
   background: #141414;
   bottom: 0;
   text-align: left;
-  width: 90%;
-  padding: 7px 11px;
+  width: 100%;
+  padding: 3px 11px;
   opacity: 1;
-  height: 42px;
+  height: 51px;
   color: white;
   font-weight: 600;
 }
 
 .card-list {
   display: flex;
-  margin-top: 30%;
+  margin-top: 35%;
   position: relative;
   flex-direction: row;
   flex-wrap: wrap;
@@ -181,7 +181,7 @@ $warn: #f44336;
 .card-info {
   width: 100%;
   bottom: 0;
-  filter: blur(30px) grayscale(100%);
+  filter: blur(40px) grayscale(100%);
   z-index: 0;
   left: 0px;
   height: 56px;
@@ -220,11 +220,14 @@ $secondary-color: #cbd736;
 }
 
 .pagination-container {
-  position: absolute;
+  position: relative;
   padding: 1rem;
   margin: 3rem auto;
   border-radius: 0.2rem;
+  float: left;
   counter-reset: pagination;
+  bottom: 0;
+  width: 100%;
   text-align: center;
   z-index: 3;
   &:after {
@@ -249,6 +252,7 @@ li {
   &:hover {
     a {
       color: $secondary-color;
+      cursor: pointer;
     }
   }
   &:focus {
