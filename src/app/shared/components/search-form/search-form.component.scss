@@ -64,11 +64,9 @@ $warn: #f44336;
 
 .card-list {
   display: flex;
-  margin-top: 35%;
-  /* height: 1000px; */
+  margin-top: 30%;
   position: relative;
   flex-direction: row;
-  /* overflow-y: scroll; */
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -172,6 +170,7 @@ $warn: #f44336;
   bottom: 0;
   filter: blur(30px) grayscale(100%);
   z-index: 0;
+  left: 0px;
   height: 56px;
   position: absolute;
 }
@@ -184,5 +183,96 @@ $warn: #f44336;
   .btn,
   .form {
     top: 167px;
+  }
+}
+
+//pagination
+$main-color: #f0f0f0;
+$secondary-color: #CBD736;
+
+ @mixin display-child($n) {
+    @for $i from 2 through $n {
+      &:nth-child(#{$i}) {
+        a {
+          display: inline-block;
+        }
+      }
+    }
+ }
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+
+
+.pagination-container {
+  position: absolute;
+      padding: 1rem;
+      margin: 3rem auto;
+      border-radius: 0.2rem;
+      counter-reset: pagination;
+      text-align: center;
+  &:after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+  ul {
+    width: 100%;
+  }
+}
+
+ul, li {
+  list-style: none;
+  display: inline;
+  padding-left: 0px;
+}
+
+li {
+  counter-increment: pagination;
+  &:hover {
+    a {
+      color: $secondary-color;
+    }
+  }
+  &:focus {
+    a {
+      color: $secondary-color;
+    }
+  }
+  &.active {
+    a {
+      color: $secondary-color;
+    }
+  }
+  &:first-child {
+    a {
+      display: inline-block;
+    }
+    a:after {
+      content: "<";
+    }
+  }
+  &:last-child {
+    a {
+      display: inline-block;
+    }
+    a:after {
+      content: ">";
+    }
+  }
+  a {
+      border-radius: 0.2rem;
+      color: #7d7d7d;
+      text-decoration: none;
+      text-transform: uppercase;
+      display: inline-block;
+      text-align: center;
+      padding: 0.5rem 0.9rem;
+      margin: 10px;
+      font-size: 1.4rem;
   }
 }

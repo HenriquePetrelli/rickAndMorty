@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   showLoading: boolean = false;
 
-  constructor() { }
+  constructor() {
+   }
 
   ngOnInit(): void {
   }

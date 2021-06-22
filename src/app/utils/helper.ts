@@ -15,6 +15,12 @@ export class Helper {
         });
     }
 
+    returnSplitPaginationUrlApi(url: string) {
+        let splitUrl = url.split("=")
+        var split = splitUrl[1].split("&");
+        return split[0];
+    }
+
     returnSplitUrlApi(url: string) {
         let split = url.split("/");
         return split[5];

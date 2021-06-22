@@ -1,8 +1,8 @@
 <div>
     <div class="main">
+        <app-loading *ngIf="showLoading"></app-loading>
         <div class="content">
             <img class="logo" src="../../assets/imgs/logo.png">
-            <app-loading [hidden]="!showLoading"></app-loading>
             <app-search-form></app-search-form>
         </div>
     </div>

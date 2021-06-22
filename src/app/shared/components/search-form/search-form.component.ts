@@ -16,37 +16,71 @@ export class SearchFormComponent implements OnInit {
   showCharacter: boolean;
   characters: NgIterable<Character> | null | undefined;
   showCharacterDetails: boolean = false;
+  showPagination: boolean = false;
+  count: string | null | undefined;
+  next: string | null | undefined;
+  prev: string | null | undefined;
+  pages: number | undefined;
+  numbers: number[] = [];
 
   constructor(private router: Router,
     private _characterService: CharacterService,
     private _helper: Helper,
-    private homeComponent: HomeComponent
+    private homeComponent: HomeComponent,
   ) {
     this.characterName = "";
     this.showCharacter = true;
+ 
   }
 
   ngOnInit(): void { }
 
-  async searchCharacter() {
+  async searchCharacter(isFirstPage: boolean) {
     let isValid = this.validateForm();
     if (!isValid) return;
+    
     this.homeComponent.showLoading = true;
-    (await this._characterService.searchCharactersByName(this.characterName)).toPromise().then((response: any) => {
+    let lastPage;
+    if (!isFirstPage) {
+      lastPage = localStorage.getItem("next_page");
+    } else {
+      lastPage = "1";
+    }
+    if (!lastPage)
+      lastPage = "1";
+
+    (await this._characterService.searchCharactersByName(this.characterName, lastPage)).toPromise().then(async (response: any) => {
       if (!response) {
         this.homeComponent.showLoading = false;
         this._helper.showToastMsg("Character not found!", "", 4000);
         return;
       }
+      localStorage.setItem("character_name", this.characterName);
+      localStorage.setItem("character_name", this.characterName);
       this.characters = response.results;
-      console.log(this.characters);
+      await this.setPagination(response.info);
       this.showCharacter = true;
       this.homeComponent.showLoading = false;
+      if (this.pages) {
+        this.numbers = [];
+      for (let index = 1; index <= this.pages; index++) {
+        this.numbers.push(index);
+      }
+    }
+      console.log(this.numbers);
+      this.showPagination = true;
     }).catch(error => {
       this.homeComponent.showLoading = false;
       let msgError = this._helper.returnMsgToRequest(error);
-      this._helper.showToastMsg(msgError.message, "", 4000);
+      this._helper.showToastMsg("Character not found!", "", 4000);
     })
+  }
+
+  async setPagination(info: { count: number; next: string; prev: string; pages: number | undefined; }) {
+   this.count = info.count.toString();
+  this.next = info.next;
+   this.prev = info.prev;
+   this.pages = info.pages;
   }
 
   validateForm() {
@@ -63,5 +97,21 @@ export class SearchFormComponent implements OnInit {
   openCharacterDetail(id: number) {
     this.showCharacterDetails = true
     this._characterService.setIdCharacter(id);
+  }
+
+  changePage(isNext: boolean) {
+    let pageNumber = "";
+    if (isNext && this.next) {
+      pageNumber = this._helper.returnSplitPaginationUrlApi(this.next);
+    } else if (!isNext && this.prev) {
+      pageNumber = this._helper.returnSplitPaginationUrlApi(this.prev);
+    }
+    localStorage.setItem("next_page", pageNumber);
+    this.searchCharacter(false);
+  }
+
+  goToPage(i: number) {
+    localStorage.setItem("next_page", i.toString());
+    this.searchCharacter(false);
   }
 }

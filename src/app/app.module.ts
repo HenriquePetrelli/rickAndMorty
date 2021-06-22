@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //COMPONENTS
 import { AppComponent } from './app.component';
 import { HomeComponent } from 'src/app/shared/components/home/home.component';
@@ -32,13 +32,13 @@ import {MatIconModule} from '@angular/material/icon';
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    FormsModule,
     MatFormFieldModule,
-    MatInputModule,
+    MatInputModule, 
     MatSnackBarModule,
     MatCardModule,
     CommonModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule,
   ],
   providers: [SearchFormComponent, CharacterDetailComponent],
   bootstrap: [AppComponent]

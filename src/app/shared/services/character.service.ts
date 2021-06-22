@@ -17,8 +17,8 @@ import { CharacterDetail } from '../interfaces/character-detail.interface';
 export class CharacterService {
   constructor(private _helper: Helper, private http: HttpClient) { }
 
-  async searchCharactersByName(characterName: string): Promise<Observable<Character[] | httpError>> {
-    const result = `${environment.baseUrl}character/?name=${characterName}`;
+  async searchCharactersByName(characterName: string, page: string): Promise<Observable<Character[] | httpError>> {
+    const result = `${environment.baseUrl}character/?name=${characterName}&?page=${page}`;
     const request = await this.http.get<Character[]>(result)
       .pipe(catchError((err) => this.handleHttpError(err)));
 return request;

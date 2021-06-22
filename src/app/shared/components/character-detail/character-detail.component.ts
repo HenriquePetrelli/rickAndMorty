@@ -45,11 +45,9 @@ export class CharacterDetailComponent implements OnInit {
 
   async getCharacterAbout() {
     if (!this.id) return;
-    this.homeComponent.showLoading = true;
     (await this.characterService.getCharacterDetailsById(this.id)).subscribe(async (result: any) => {
       let lastSeenDate;
       if (!result) {
-        this.homeComponent.showLoading = false;
         this.helper.showToastMsg("Details not found!", "", 4500);
         return;
       }
@@ -66,14 +64,11 @@ export class CharacterDetailComponent implements OnInit {
         }
         lastSeenDate = episode.air_date;
         this.aboutDescription = await this.aboutDescriptionContructor(result, lastSeenDate);
-        this.homeComponent.showLoading = false;
       }, error => {
-        this.homeComponent.showLoading = false;
         let msgError = this.helper.returnMsgToRequest(error);
         this.helper.showToastMsg(msgError.friendlyMessage, "", 4500);
       });
     }, error => {
-      this.homeComponent.showLoading = false;
       let msgError = this.helper.returnMsgToRequest(error);
       this.helper.showToastMsg(msgError.friendlyMessage, "", 4500);
     });

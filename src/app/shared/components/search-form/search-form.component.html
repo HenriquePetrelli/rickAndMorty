@@ -2,21 +2,36 @@
   <input tabindex="1" matInput placeholder="Search characters" [(ngModel)]="characterName">
   <!-- <mat-error *ngIf="characterName.invalid">{{getErrorMessage()}}</mat-error> -->
 </mat-form-field>
-<button tabindex="2" (click)="searchCharacter()" (keyup.enter)="searchCharacter()" class="btn" mat-stroked-button>Search</button>
+<button tabindex="2" (click)="searchCharacter(true)" (keyup.enter)="searchCharacter(true)" class="btn"
+  mat-stroked-button>Search</button>
 
 <div class="card-list">
   <div class="card" *ngFor="let character of characters" (click)="openCharacterDetail(character.id)">
-    <div> 
-      <img class="card-image" [ngClass]="character.status == 'Dead'? 'character-dead' : ''" src={{character.image}} alt={{character.name}}>
+    <div>
+      <img class="card-image" [ngClass]="character.status == 'Dead'? 'character-dead' : ''" src={{character.image}}
+        alt={{character.name}}>
     </div>
     <div class="card-content">
-      <img class="card-info" [ngClass]="character.status == 'Dead'? 'character-dead' : ''" src={{character.image}} alt={{character.name}}>
+      <img class="card-info" [ngClass]="character.status == 'Dead'? 'character-dead' : ''" src={{character.image}}
+        alt={{character.name}}>
       <h4 class="name limit-letters">
         {{character.name}}
       </h4>
       <p class="species">{{character.species}}</p>
     </div>
   </div>
+
+  <div *ngIf="showPagination && this.numbers.length > 1" class="pagination-container">
+    <div class="pagination">
+      <ul id="pagination">
+        <li><a (click)='changePage(false)'></a></li>
+        <li *ngFor="let item of this.numbers"><a (click)="goToPage(item)">{{item}}</a></li>
+        <li><a (click)='changePage(true)'></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- <app-pagination *ngIf="showPagination"></app-pagination> -->
 </div>
 
 <app-character-detail *ngIf="showCharacterDetails"></app-character-detail>
