@@ -228,6 +228,7 @@ $secondary-color: #CBD736;
       border-radius: 0.2rem;
       counter-reset: pagination;
       text-align: center;
+      z-index: 3;
   &:after {
     clear: both;
     content: "";
