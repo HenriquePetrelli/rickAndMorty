@@ -73,7 +73,6 @@ export class SearchFormComponent implements OnInit {
             this.numbers.push(index);
           }
         }
-        console.log(this.numbers);
         this.showPagination = true;
       })
       .catch((error) => {

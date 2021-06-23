@@ -186,9 +186,6 @@ body {
     }
 
     @media screen and (max-width: 1000px) {
-      // width: 45%;
-    }
-    @media screen and (max-width: 1000px) {
       transform: translateY(-50%);
       width: 90%;
     }
@@ -286,10 +283,8 @@ body {
   }
 
   &__content {
-    // width: 60%;
     padding-right: 25px;
     @media screen and (max-width: 1000px) {
-      // width: 55%;
     }
     @media screen and (max-width: 1000px) {
       margin-top: -80px;
