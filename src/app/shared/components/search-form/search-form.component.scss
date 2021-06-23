@@ -1,8 +1,8 @@
-// @import url(../../theme.scss);
-
 $primary: #ffffff;
 $accent: #cbd736;
 $warn: #f44336;
+$black: #1b1b1b;
+$dark: rgba(54, 54, 54, 0.9);
 
 .form {
   position: absolute;
@@ -21,7 +21,7 @@ $warn: #f44336;
   height: 46px;
   left: calc(50% - 84px / 2 + 106px);
   top: 326px;
-  border: 2px solid #ffffff;
+  border: 2px solid $primary;
   box-sizing: border-box;
   border-radius: 8px;
   outline: none;
@@ -78,7 +78,7 @@ $warn: #f44336;
   width: 223px;
   height: 223px;
   display: flex;
-  background: #1b1b1b;
+  background: $black;
   border: 2px solid #606060;
   box-sizing: border-box;
   border-radius: 8px;
@@ -92,9 +92,8 @@ $warn: #f44336;
 
 .card:hover,
 .card:active {
-  border: 2px solid #cbd736;
-  box-shadow: 0px 0px 0px 3px #c9d636, 0px 0px 5px 4px #c9d636,
-    inset 0px 0px 0px 1px rgba(0, 0, 0, 0.6);
+  border: 2px solid $accent;
+  box-shadow: 0px 0px 0px 3px $accent, 0px 0px 5px 4px $accent, inset 0px 0px 0px 1px rgba(0, 0, 0, 0.6);
 }
 
 .card-image {
@@ -105,7 +104,7 @@ $warn: #f44336;
 }
 
 .toolbar {
-  background-color: rgba(54, 54, 54, 0.9);
+  background-color: $dark;
   top: 0;
   position: fixed;
   height: 80px;
@@ -120,7 +119,7 @@ $warn: #f44336;
   overflow: hidden;
   width: 187px;
   height: 187px;
-  background: #1b1b1b;
+  background: $black;
   border: 2px solid #606060;
   box-sizing: border-box;
   border-radius: 8px;
@@ -188,20 +187,9 @@ $warn: #f44336;
   position: absolute;
 }
 
-@media only screen and (max-width: 950px) {
-  .card-list {
-    margin-top: 60%;
-  }
-
-  .btn,
-  .form {
-    top: 167px;
-  }
-}
-
 //pagination
 $main-color: #f0f0f0;
-$secondary-color: #cbd736;
+$secondary-color: $accent;
 
 @mixin display-child($n) {
   @for $i from 2 through $n {
@@ -291,5 +279,29 @@ li {
     padding: 0.5rem 0.9rem;
     margin: 10px;
     font-size: 1.4rem;
+  }
+}
+
+//MOBILE PORTRAIT
+@media only screen and (max-width: 950px) {
+  .card-list {
+    margin-top: 55%;
+  }
+
+  .btn,
+  .form {
+    top: 167px;
+  }
+}
+
+//MOBILE LANDSCAPE
+@media only screen and (max-height: 400px) and (max-width: 700px) {
+  .card-list {
+    margin-top: 45%;
+  }
+
+  .btn,
+  .form {
+    top: 167px;
   }
 }

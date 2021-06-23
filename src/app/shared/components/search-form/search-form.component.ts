@@ -23,6 +23,8 @@ export class SearchFormComponent implements OnInit {
   prev: string | null | undefined;
   pages: number | undefined;
   numbers: number[] = [];
+  paginationMobile: boolean = false;
+  currentPage: number = 1;
 
   constructor(
     private router: Router,
@@ -47,18 +49,10 @@ export class SearchFormComponent implements OnInit {
     if (!isValid) return;
 
     this.homeComponent.showLoading = true;
-    let lastPage;
-    if (!isFirstPage) {
-      lastPage = localStorage.getItem('next_page');
-    } else {
-      lastPage = '1';
-    }
-    if (!lastPage) lastPage = '1';
-
     (
       await this._characterService.searchCharactersByName(
         this.characterName,
-        lastPage
+        this.currentPage.toString()
       )
     )
       .toPromise()
@@ -121,7 +115,6 @@ export class SearchFormComponent implements OnInit {
 
   openCharacterDetail(id: number) {
     this.showCharacterDetails = true;
-    
     this._characterService.setIdCharacter(id);
   }
 
@@ -129,21 +122,22 @@ export class SearchFormComponent implements OnInit {
     let pageNumber = '';
     if (isNext && this.next) {
       pageNumber = this._helper.returnSplitPaginationUrlApi(this.next);
+      this.currentPage = +pageNumber;
     } else if (!isNext && this.prev) {
       pageNumber = this._helper.returnSplitPaginationUrlApi(this.prev);
+      this.currentPage = +pageNumber;
     }
-    localStorage.setItem('next_page', pageNumber);
     let element: HTMLElement | null;
-    element = document.getElementById(pageNumber);
+    element = document.getElementById(this.currentPage.toString());
     if (element)
       element.focus();
     this.searchCharacter(false);
   }
 
-  goToPage(pageNumber: number) {
-    localStorage.setItem('next_page', pageNumber.toString());
+  goToPage(pageNumber: any) {
+    this.currentPage = pageNumber;
     let element: HTMLElement | null;
-    element = document.getElementById(pageNumber.toString());
+    element = document.getElementById(pageNumber);
     if (element)
       element.focus();
     this.searchCharacter(false);
@@ -177,6 +171,8 @@ export class SearchFormComponent implements OnInit {
           elementToolbar,
           elementLogo
         );
+      } else if (event.target.clientWidth < 400) {
+        this.paginationMobile = true;
       }
     }
   };

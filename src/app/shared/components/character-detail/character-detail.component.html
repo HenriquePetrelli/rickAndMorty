@@ -1,7 +1,7 @@
-<div class="blog-slider">
-  <div class="blog-slider__wrp swiper-wrapper">
-    <div class="blog-slider__item swiper-slide">
-      <div class="blog-slider__img">
+<div class="card-detail">
+  <div class="card-detail__wrp swiper-wrapper">
+    <div class="card-detail__item swiper-slide">
+      <div class="card-detail__img">
         <div style="height: 55%">
           <img class="character-img" src="{{ characterImage }}" alt="{{ characterImage }}" />
           <div class="img-content">
@@ -10,7 +10,8 @@
           </div>
         </div>
       </div>
-      <div class="blog-slider__content">
+      <div class="card-detail__content">
+        <div class="close-mobile" (click)="closeDetailCard()">X</div>
         <div class="blur-img">
           <img class="character-img-background" src="{{ characterImage }}" alt="{{ characterImage }}" />
           <div class="btn-position">
