@@ -4,9 +4,9 @@
 
 🔧 Execução
  - Rodar aplicação:
-    Executar npm install
-    Executar ng serve
-    Acessar url concedida no terminal (provavelmente será http://localhost:4200/ se não estiver utilizando essa porta)
+ -  Executar npm install
+ -  Executar ng serve
+ -  Acessar url concedida no terminal (provavelmente será http://localhost:4200/ se não estiver utilizando essa porta)
  - Build em aplicação:
     Executar npm build
 
