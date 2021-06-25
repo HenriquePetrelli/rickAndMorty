@@ -1,7 +1,7 @@
 {
   "homepage": "http://henrique-petrelli.github.io/rick-and-morty.com",
   "name": "rick-and-morty",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
