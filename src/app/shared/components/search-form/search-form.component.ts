@@ -1,6 +1,5 @@
 import { Component, NgIterable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { Helper } from 'src/app/utils/helper';
 import { Character } from '../../interfaces/character.interface';
 import { CharacterService } from '../../services/character.service';
