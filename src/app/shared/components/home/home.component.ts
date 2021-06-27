@@ -10,9 +10,5 @@ export class HomeComponent implements OnInit {
 
   constructor() {}
 
-  async ngOnInit(): Promise<void> {
-    const { id, version } = await document.interestCohort();
-  }
-
-  
+  ngOnInit(): void {}
 }
