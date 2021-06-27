@@ -9,7 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "predeploy": "npm run build",
-    "deploy": "master -d build"
+    "deploy": "homolog -d build"
   },
   "private": true,
   "dependencies": {
