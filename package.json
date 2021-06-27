@@ -9,7 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "master -d build"
   },
   "private": true,
   "dependencies": {
