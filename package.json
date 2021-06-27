@@ -9,7 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "predeploy": "npm run build",
-    "deploy": "master -d build"
+    "deploy": "ng-pages -d build"
   },
   "private": true,
   "dependencies": {
