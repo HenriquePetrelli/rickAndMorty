@@ -1,5 +1,5 @@
 {
-  "homepage": "https://henriquepetrelli.github.io/",
+  "homepage": "https://henriquepetrelli.github.io/rickAndMorty",
   "name": "rick-and-morty",
   "version": "0.1.0",
   "scripts": {
@@ -9,7 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "private": true,
   "dependencies": {
